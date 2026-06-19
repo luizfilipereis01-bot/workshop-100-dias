@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workshop 100 Dias para o ENEM — Renato Palmeira</title>
+<meta name="description" content="No dia 04 de julho, ao vivo, monte o plano de estudos dos seus últimos 100 dias até o ENEM. Reta final de Medicina com um caminho na mão." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f5efe4;
+    --bg-2: #efe8db;
+    --orange: #e23b34;
+    --orange-2: #f0533f;
+    --text: #1a1a1a;
+    --muted: #6e6862;
+    --muted-2: #a39c93;
+    --line: rgba(0, 0, 0, 0.10);
+    --card: #fffdf9;
+    --card-border: rgba(226, 59, 52, 0.22);
+    --maxw: 760px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; }
+
+  .em { color: var(--orange); }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* progress bar top */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--orange);
+    border-bottom: none;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 9px 16px;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.92);
+  }
+  .topbar .track { width: 180px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.28); overflow: hidden; }
+  .topbar .track i { display: block; height: 100%; width: 87%; background: #fff; }
+  .topbar .pct { color: #fff; font-weight: 700; }
+
+  /* hero */
+  .hero {
+    position: relative;
+    padding: 80px 0 70px;
+    background:
+      radial-gradient(900px 480px at 50% -8%, rgba(226,59,52,0.10), transparent 60%),
+      radial-gradient(600px 300px at 50% 0%, rgba(240,83,63,0.07), transparent 70%),
+      var(--bg);
+  }
+
+  .kicker { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--orange); margin-bottom: 22px; font-weight: 600; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--card-border); border-radius: 999px;
+    padding: 7px 16px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange-2); margin-bottom: 28px; background: rgba(226,59,52,0.07);
+  }
+  .badge::before { content: "●"; font-size: 8px; color: var(--orange); }
+
+  /* banner mobile (substitui o selo de texto no mobile) */
+  .badge-img { display: none; width: 100%; max-width: 420px; height: auto; border-radius: 12px; margin-bottom: 28px; }
+
+  .hero h1 { font-size: clamp(34px, 6vw, 58px); margin-bottom: 24px; }
+
+  .lede { font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); max-width: 600px; margin-bottom: 36px; }
+  .lede strong { color: var(--text); font-weight: 600; }
+
+  /* elimination box */
+  .elim { display: flex; flex-direction: column; gap: 0; margin-bottom: 36px; border-radius: 14px; overflow: hidden; }
+  .elim-row {
+    display: flex; gap: 14px; padding: 16px 18px; border: 1px solid var(--line); border-bottom: none;
+    font-size: 14.5px; color: var(--muted); background: rgba(0,0,0,0.02);
+  }
+  .elim-row:last-child { border-bottom: 1px solid var(--line); }
+  .elim-row .mark { flex: 0 0 auto; font-weight: 700; line-height: 1.5; }
+  .elim-row .mark.no { color: var(--muted-2); }
+  .elim-row .mark.yes { color: var(--orange); }
+  .elim-row strong { color: var(--text); font-weight: 600; }
+  .elim-row.win { background: rgba(226,59,52,0.07); border-color: var(--card-border); border-bottom: 1px solid var(--card-border); }
+  .elim-row.win, .elim-row.win + .elim-row { }
+
+  .guarantee-line { font-size: 13px; color: var(--orange-2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 22px; }
+
+  /* CTA */
+  .cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(90deg, var(--orange), var(--orange-2));
+    color: #fff; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 18px 38px; border-radius: 999px; text-decoration: none;
+    box-shadow: 0 0 0 0 rgba(226,59,52,0.5), 0 14px 40px -8px rgba(226,59,52,0.45);
+    transition: transform .15s ease, box-shadow .25s ease;
+    border: none; cursor: pointer;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px 2px rgba(226,59,52,0.3), 0 18px 50px -8px rgba(226,59,52,0.5); }
+  .cta.block { display: flex; width: 100%; }
+
+  /* sections */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  section.nb { border-top: none; }
+  .tag { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; font-weight: 600; }
+  h2 { font-size: clamp(27px, 4.6vw, 40px); margin-bottom: 22px; }
+  section p { color: var(--muted); margin-bottom: 16px; font-size: 16.5px; max-width: 640px; }
+  section p strong { color: var(--text); font-weight: 600; }
+  section p.big { font-size: clamp(18px, 2.6vw, 22px); color: var(--text); font-family: "Fraunces", serif; }
+
+  /* blocks grid */
+  .blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  .block {
+    border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+    background: linear-gradient(180deg, rgba(226,59,52,0.05), transparent);
+  }
+  .block .n { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+  .block h3 { font-size: 19px; margin-bottom: 8px; color: var(--text); }
+  .block p { font-size: 14.5px; margin: 0; color: var(--muted); }
+
+  /* authority */
+  .author { display: flex; gap: 22px; align-items: flex-start; flex-wrap: wrap; }
+  .author .photo {
+    flex: 0 0 96px; width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, #fdeceb, #f8ddda); border: 1px solid var(--card-border);
+    display: grid; place-items: center; font-family: "Fraunces", serif; font-size: 30px; color: var(--orange);
+  }
+  .author .meta { flex: 1; min-width: 240px; }
+  .author .meta h3 { font-size: 24px; margin-bottom: 6px; }
+  .author .creds { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .author .creds li { font-size: 12.5px; color: var(--orange-2); border: 1px solid var(--card-border); border-radius: 999px; padding: 4px 12px; background: rgba(226,59,52,0.06); }
+
+  /* social proof placeholder */
+  .proof-ph {
+    border: 1px dashed var(--card-border); border-radius: 14px; padding: 28px;
+    color: var(--muted); font-size: 14.5px; background: rgba(226,59,52,0.04);
+  }
+  .proof-ph strong { color: var(--orange-2); }
+
+  /* offer */
+  .offer-shell {
+    position: relative; border-radius: 20px; padding: 36px 32px;
+    background: linear-gradient(180deg, #fffdf9, #faf3e9);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 0 60px -20px rgba(226,59,52,0.25);
+  }
+  .offer-list { list-style: none; margin-bottom: 24px; }
+  .offer-list li {
+    display: flex; align-items: center; gap: 12px; padding: 13px 0;
+    border-bottom: 1px solid var(--line); font-size: 15px; color: var(--text);
+  }
+  .offer-list li:last-child { border-bottom: none; }
+  .offer-list .check { color: var(--orange); font-weight: 700; flex: 0 0 auto; }
+  .offer-list .price { margin-left: auto; color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .offer-list .price.bonus { color: var(--orange-2); font-weight: 600; }
+  .total-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 4px; color: var(--muted); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .total-row .strike { text-decoration: line-through; color: var(--muted-2); }
+  .pay-label { text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px; }
+  .price-big { text-align: center; font-family: "Fraunces", serif; font-size: 56px; color: var(--orange); line-height: 1; margin-bottom: 6px; }
+  .price-sub { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 26px; }
+
+  .bonus-note { margin-top: 18px; font-size: 13.5px; color: var(--muted); text-align: center; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .bonus-note strong { color: var(--orange-2); }
+
+  /* guarantee */
+  .guarantee-center { text-align: center; }
+  .guarantee-center h2 { text-align: center; }
+  .guarantee-center p { margin-left: auto; margin-right: auto; }
+  .seal {
+    display: inline-grid; place-items: center; width: 78px; height: 78px; border-radius: 50%;
+    border: 2px solid var(--card-border); color: var(--orange); font-family: "Fraunces", serif;
+    font-size: 26px; margin: 0 auto 22px; background: rgba(226,59,52,0.05);
+  }
+
+  /* for who */
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .col-card { border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .col-card.yes { border-color: var(--card-border); background: linear-gradient(180deg, rgba(226,59,52,0.05), transparent); }
+  .col-card h3 { font-size: 16px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: "Inter", sans-serif; font-weight: 700; }
+  .col-card.yes h3 { color: var(--orange); }
+  .col-card.no h3 { color: var(--muted); }
+  .col-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .col-card li { display: flex; gap: 10px; font-size: 14.5px; color: var(--muted); }
+  .col-card li .m { flex: 0 0 auto; font-weight: 700; }
+  .col-card.yes li .m { color: var(--orange); }
+  .col-card.no li .m { color: var(--muted-2); }
+
+  /* faq */
+  .faq { display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; color: var(--text);
+    font-size: 15.5px; font-weight: 600; padding: 18px 20px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit;
+  }
+  .faq-q .ico { color: var(--orange); font-size: 20px; transition: transform .2s ease; flex: 0 0 auto; }
+  .faq-item.open .faq-q .ico { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+  .faq-a p { padding: 0 20px 18px; color: var(--muted); margin: 0; font-size: 14.5px; max-width: none; }
+
+  /* close */
+  .close-sec { text-align: center; background:
+      radial-gradient(700px 360px at 50% 120%, rgba(226,59,52,0.10), transparent 60%), var(--bg); }
+  .close-sec h2 { text-align: center; max-width: 620px; margin: 0 auto 22px; }
+  .close-sec p { margin-left: auto; margin-right: auto; }
+
+  .center-cta { text-align: center; margin-top: 36px; }
+
+  footer { border-top: 1px solid var(--line); padding: 34px 0; text-align: center; color: var(--muted-2); font-size: 12px; letter-spacing: 0.1em; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer .links { text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.18em; }
+
+  @media (max-width: 640px) {
+    .badge { display: none; }
+    .badge-img { display: block; }
+    .blocks, .twocol { grid-template-columns: 1fr; }
+    .hero { padding: 56px 0 50px; }
+    section { padding: 50px 0; }
+    .offer-shell { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Vagas para o dia 04 · acabando</span>
+    <span class="track"><i></i></span>
+    <span class="pct">87%</span>
+  </div>
+
+  <!-- SEÇÃO 1 — TOPO -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge">Workshop ao vivo · 04 de julho · sem gravação</span>
+      <img class="badge-img" src="BANNER%20BLOCO%201.png" alt="Workshop 100 Dias ENEM — Reta Final" />
+      <h1>No dia <span class="em">04 de julho</span>, ao vivo, eu monto com você o plano de estudos dos seus <span class="em">últimos 100 dias</span> até o ENEM.</h1>
+      <p class="lede">Dia a dia, na ordem certa, pra você encarar a <strong>reta final de Medicina</strong> com um caminho na mão, e não estudando no escuro.</p>
+
+      <div class="elim">
+        <div class="elim-row"><span class="mark no">✗</span><span><strong>Estudar mais horas:</strong> cansa e não organiza. Sem ordem, você esquece justo na hora da prova.</span></div>
+        <div class="elim-row"><span class="mark no">✗</span><span><strong>Seguir cronograma genérico da internet:</strong> foi feito pra outra pessoa, em outra fase. Não dura uma semana.</span></div>
+        <div class="elim-row"><span class="mark no">✗</span><span><strong>Comprar mais um curso gravado:</strong> mais conteúdo pra assistir e a mesma dúvida de sempre sobre o que fazer amanhã.</span></div>
+        <div class="elim-row win"><span class="mark yes">✓</span><span><strong>Construir o seu plano ao vivo, comigo, no dia 04:</strong> dia a dia, na sua realidade, do jeito que a reta final de Medicina exige.</span></div>
+      </div>
+
+      <p class="guarantee-line">Inscrição sem risco · cancele até a véspera com devolução total</p>
+
+      <a href="#oferta" class="cta">Quero minha vaga no dia 04</a>
+    </div>
+  </header>
+
+  <!-- SEÇÃO 2 — A AMEAÇA -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// a ameaça</p>
+      <h2>Esse vai ser o ENEM <span class="em">mais difícil da história</span> pra quem quer Medicina.</h2>
+      <p>E não é força de expressão. O SISU mudou a regra e passou a aceitar as notas das <strong>três últimas edições do ENEM, de 2023 a 2025</strong>.</p>
+      <p>Na prática, você não disputa mais só contra quem faz a prova esse ano. Disputa contra todo mundo que tirou nota alta nos últimos anos e ficou de fora por um ou dois pontos. Em Medicina, onde a federal já passa de <strong>100 candidatos por vaga</strong>, essa fila acabou de inchar.</p>
+      <p class="big">Nunca foi tão arriscado entrar na reta final sem saber exatamente o que fazer.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3 — POR QUE ESTUDAR MAIS NÃO RESOLVE -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// o problema real</p>
+      <h2>Na reta final, <span class="em">estudar mais</span> não é o que falta.</h2>
+      <p>Você provavelmente já tem material de sobra. Apostila, videoaula, resumo, PDF salvo que nem abriu. O que derruba quem quer Medicina nos últimos 100 dias quase nunca é falta de conteúdo. <strong>É falta de ordem.</strong></p>
+      <p>Sem um plano que diga o que vem primeiro, você revisa no impulso, gasta os melhores dias no que já domina, empurra o que mais cai pra última hora e chega na prova sem saber onde estava perdendo ponto.</p>
+      <p class="big">Volume sem direção vira cansaço, não vira nota.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4 — O QUE É O WORKSHOP -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// o que é</p>
+      <h2>O <span class="em">Workshop 100 Dias</span> para o ENEM</h2>
+      <p><strong>Um sábado, dia 04 de julho, ao vivo, comigo.</strong></p>
+      <p>Não é palestra motivacional. É um dia de trabalho em que a gente constrói, do zero, o seu plano de estudos estratégico pros 100 dias que faltam até a prova. Você responde, participa, e sai com o plano pronto pra usar já na segunda de manhã.</p>
+      <p>E como é ao vivo e sem gravação, o que for construído no dia 04 fica só pra quem estava lá. <strong>Ou você participa, ou fica de fora.</strong></p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5 — O QUE A GENTE CONSTRÓI -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// o que você constrói</p>
+      <h2>O que você sai construindo <span class="em">no dia 04</span></h2>
+      <div class="blocks">
+        <div class="block">
+          <div class="n">Bloco 1</div>
+          <h3>O Mapa 100 Dias</h3>
+          <p>O cronograma dia a dia até o ENEM, montado ao vivo com você. Cada um dos 100 dias com uma tarefa clara, na ordem que rende mais.</p>
+        </div>
+        <div class="block">
+          <div class="n">Bloco 2</div>
+          <h3>O Calendário das Provas Antigas</h3>
+          <p>Quais provas fazer, em que ordem e como extrair nota de cada uma, pra você treinar do jeito que prepara de verdade.</p>
+        </div>
+        <div class="block">
+          <div class="n">Bloco 3</div>
+          <h3>A Mala Diagnóstico</h3>
+          <p>O sistema pra achar o padrão dos seus erros e corrigir a tempo, antes que ele apareça na prova que vale.</p>
+        </div>
+        <div class="block">
+          <div class="n">Bloco 4</div>
+          <h3>A Masterclass da Reta Final</h3>
+          <p>A estratégia completa de como atravessar esses 100 dias sem se perder, mantendo o ritmo até o dia da prova.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 6 — POR QUE FUNCIONA -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// por que funciona</p>
+      <h2>Por que um plano <span class="em">dia a dia</span> muda a sua reta final</h2>
+      <p>O que separa quem passa de quem repete quase nunca é inteligência ou quantidade de horas. <strong>É clareza.</strong></p>
+      <p>Quando você sabe exatamente o que abrir no caderno hoje, amanhã e em cada um dos dias que faltam, a ansiedade dá lugar pra ação, o estudo rende e cada dia conta. É isso que um plano construído pra sua realidade entrega, e que cronograma genérico nunca vai entregar.</p>
+      <p class="big">Você não vai estudar mais. Vai estudar do jeito que essa concorrência exige.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 7 — AUTORIDADE -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// seu professor</p>
+      <h2>Quem vai montar esse plano <span class="em">com você</span></h2>
+      <div class="author">
+        <div class="photo">RP</div>
+        <div class="meta">
+          <h3>Renato Palmeira</h3>
+          <ul class="creds">
+            <li>Médico formado pela UFCSPA</li>
+            <li>Neurociência aplicada aos estudos</li>
+            <li>+9.000 alunos mentorados</li>
+          </ul>
+          <p>Médico formado pela UFCSPA e criador do <strong>Método Memorize</strong>, o Renato já mentorou mais de 9.000 alunos rumo à aprovação em Medicina e em outros cursos concorridos.</p>
+          <p>Ele une neurociência e estratégia de reta final pra montar cronogramas que fazem você aprender mais rápido, lembrar na hora da prova e chegar pronto pro ENEM. É por isso que o plano do dia 04 não é só uma lista de tarefas: <strong>é um cronograma pensado pra você fixar o conteúdo e não dar branco quando mais importa.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 8 — PROVA SOCIAL -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// prova social</p>
+      <h2>O que acontece quando o estudo <span class="em">ganha um plano</span></h2>
+      <div class="proof-ph">
+        <p style="margin:0;"><strong>[ÁREA DE DEPOIMENTOS]</strong> — inserir de 3 a 6 depoimentos reais: prints de mensagem, vídeos curtos ou casos de aprovação do Renato. Sem prova real essa seção fica fraca e arrisca compliance. Envie o material que organizamos legendas e ordem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 9 — OFERTA -->
+  <section id="oferta">
+    <div class="wrap">
+      <p class="tag" style="text-align:center;">// tudo o que você recebe</p>
+      <h2 style="text-align:center;">Tudo o que você recebe <span class="em">no dia 04</span></h2>
+      <div class="offer-shell">
+        <ul class="offer-list">
+          <li><span class="check">✓</span> Masterclass da Reta Final <span class="price">R$ 197</span></li>
+          <li><span class="check">✓</span> Mapa 100 Dias (plano dia a dia, ao vivo) <span class="price">R$ 147</span></li>
+          <li><span class="check">✓</span> Calendário de Provas Antigas <span class="price">R$ 97</span></li>
+          <li><span class="check">✓</span> Mala Diagnóstico <span class="price">R$ 97</span></li>
+          <li><span class="check">✓</span> Bônus: +3.600 questões do ENEM comentadas <span class="price bonus">Bônus</span></li>
+        </ul>
+        <div class="total-row"><span>Valor total</span><span class="strike">R$ 538</span></div>
+        <p class="pay-label">Hoje você garante por</p>
+        <div class="price-big">R$ 67</div>
+        <p class="price-sub">à vista — ou 8x de R$ 8,80</p>
+        <a href="#" class="cta block">Garantir minha vaga e o bônus</a>
+        <p class="bonus-note"><strong>Bônus de inscrição antecipada:</strong> garanta sua matrícula agora e leve, junto com o plano, mais de 3.600 questões do ENEM comentadas pra treinar dia a dia na reta final.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 10 — GARANTIA -->
+  <section>
+    <div class="wrap guarantee-center">
+      <p class="tag" style="text-align:center;">// garantia</p>
+      <div class="seal">7</div>
+      <h2>Inscrição <span class="em">sem risco</span></h2>
+      <p>Mudou de ideia antes do dia 04? É só avisar até a véspera e eu devolvo 100% do valor, sem burocracia.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 11 — PRA QUEM É -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// pra quem é</p>
+      <h2>Pra quem é o <span class="em">Workshop 100 Dias</span></h2>
+      <div class="twocol">
+        <div class="col-card yes">
+          <h3>É pra você se</h3>
+          <ul>
+            <li><span class="m">✓</span> Você quer Medicina e vai tentar a vaga pelo ENEM 2026</li>
+            <li><span class="m">✓</span> Está na reta final e se sente perdido sobre o que estudar primeiro</li>
+            <li><span class="m">✓</span> Estuda muito e não vê a nota do simulado subir</li>
+            <li><span class="m">✓</span> Quer um plano claro pra cada dia, não mais conteúdo solto</li>
+          </ul>
+        </div>
+        <div class="col-card no">
+          <h3>Não é pra você se</h3>
+          <ul>
+            <li><span class="m">✗</span> Você procura fórmula mágica e não está disposto a seguir um plano</li>
+            <li><span class="m">✗</span> Espera garantia de aprovação sem esforço</li>
+            <li><span class="m">✗</span> Já tem um plano de estudos que funciona e que você segue à risca</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 12 — FAQ -->
+  <section>
+    <div class="wrap">
+      <p class="tag">// faq</p>
+      <h2>Dúvidas <span class="em">frequentes</span></h2>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q">Preciso estar muito adiantado pra participar?<span class="ico">+</span></button>
+          <div class="faq-a"><p>Não. O plano é construído a partir de onde você está hoje. Atrasado ou em dia, em 100 dias bem usados dá pra mudar muita coisa.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O workshop fica gravado?<span class="ico">+</span></button>
+          <div class="faq-a"><p>Não. É ao vivo, um dia só, sem replay. O que for construído no dia 04 fica só pra quem participou ao vivo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Funciona se eu já estou no cursinho ou na escola?<span class="ico">+</span></button>
+          <div class="faq-a"><p>Sim. O plano é pensado pra encaixar na sua rotina real, mesmo que ela seja apertada, sem brigar com o que você já faz.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Vou sair com o plano pronto no mesmo dia?<span class="ico">+</span></button>
+          <div class="faq-a"><p>Sim. Esse é o ponto. Você termina o sábado sabendo o que estudar em cada um dos dias que faltam.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">E se eu não puder no horário do dia 04?<span class="ico">+</span></button>
+          <div class="faq-a"><p>Como não tem gravação, a participação é ao vivo. Por isso vale reservar a data agora.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Serve pra quem quer outro curso, não só Medicina?<span class="ico">+</span></button>
+          <div class="faq-a"><p>O workshop é desenhado pra reta final de quem mira Medicina pelo ENEM, que é a disputa mais apertada. A lógica do plano ajuda qualquer candidato, mas os exemplos e a régua são de Medicina.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 13 — FECHAMENTO -->
+  <section class="close-sec">
+    <div class="wrap">
+      <h2>A reta final começou. A pergunta é se você vai encará-la <span class="em">com um plano</span> ou no escuro.</h2>
+      <p>No dia 04 de julho, ao vivo, a gente monta o seu. Depois dele, você não estuda mais sem direção um único dia até o ENEM.</p>
+      <p><strong>É um dia só e não vai ter gravação.</strong></p>
+      <div class="center-cta">
+        <a href="#oferta" class="cta">Quero minha vaga no dia 04</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="links"><a href="#">Termos</a> · <a href="#">Privacidade</a> · <a href="#">Contato</a></div>
+      <div>© 2026 Workshop 100 Dias para o ENEM — Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.parentElement;
+        var ans = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function (o) {
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
