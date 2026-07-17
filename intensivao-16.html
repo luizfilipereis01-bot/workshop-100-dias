@@ -400,7 +400,6 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
       // Após o envio: manda para o quiz e, no fim do quiz, para o grupo.
       // Fluxo: Página -> Quiz -> Grupo
       var GROUP_URL = 'https://sndflw.com/i/enem-quinta';
-      var REDIRECT_URL = 'quiz?grupo=' + encodeURIComponent(GROUP_URL);
 
       var form = document.getElementById('leadForm');
       var success = document.getElementById('formSuccess');
@@ -472,6 +471,9 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         function done() {
           if (redirected) return;
           redirected = true;
+          // Leva o grupo + as UTMs/rastreio da URL para o quiz
+          var qs = new URLSearchParams(utm).toString();
+          var REDIRECT_URL = 'quiz?grupo=' + encodeURIComponent(GROUP_URL) + (qs ? '&' + qs : '');
           window.location.href = REDIRECT_URL;
         }
 

@@ -484,6 +484,12 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         if (/^utm_/i.test(k) || k === "fbclid" || k === "gclid" || k === "xcod" || k === "sck") utm[k] = v;
       });
     } catch (e) {}
+    // Fallback: usa as UTMs guardadas com o lead na página intensivão
+    if (lead && lead.utm && typeof lead.utm === "object") {
+      Object.keys(lead.utm).forEach(function (k) {
+        if (utm[k] == null) utm[k] = lead.utm[k];
+      });
+    }
 
     // Respostas legíveis (pergunta -> resposta)
     var respostas = {};
