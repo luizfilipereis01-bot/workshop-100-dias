@@ -235,7 +235,19 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
 
 <script>
   // ---- Config: destino final após responder ----
-  var FINAL_URL = "index.html"; // troque pela sua página de oferta/checkout se quiser
+  // O link do grupo vem pela URL (?grupo=...), enviado pela página intensivão.
+  // Se não vier, usa o fallback abaixo.
+  var GROUP_FALLBACK = "https://sndflw.com/i/enem-sabado";
+
+  function getFinalUrl() {
+    var url = GROUP_FALLBACK;
+    try {
+      var g = new URLSearchParams(window.location.search).get("grupo");
+      if (g) url = decodeURIComponent(g);
+    } catch (e) {}
+    return url;
+  }
+  var FINAL_URL = getFinalUrl();
 
   var QUESTIONS = [
     {
@@ -445,11 +457,10 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
     setTimeout(function () {
       document.getElementById("loader").style.display = "none";
       document.getElementById("result").style.display = "block";
-      // carrega os UTMs / query params na CTA final
+      // CTA final já aponta para o grupo (definido em FINAL_URL). Redireciona automático.
       var cta = document.getElementById("finalCta");
-      if (window.location.search) {
-        cta.href = FINAL_URL + window.location.search;
-      }
+      cta.href = FINAL_URL;
+      window.location.href = FINAL_URL;
     }, 1600);
   }
 
