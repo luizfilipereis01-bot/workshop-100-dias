@@ -450,6 +450,9 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
           utm: utm
         };
 
+        // Guarda o lead para o quiz anexar às respostas da pesquisa
+        try { localStorage.setItem('leadMemorize', JSON.stringify(payload)); } catch (e) {}
+
         // Meta Pixel — Advanced Matching + evento de Lead com o máximo de infos
         if (window.fbq) {
           fbq('init', '998848665814273', {

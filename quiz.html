@@ -239,6 +239,9 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
   // Se não vier, usa o fallback abaixo.
   var GROUP_FALLBACK = "https://sndflw.com/i/enem-sabado";
 
+  // Webhook que recebe todas as respostas da pesquisa
+  var SURVEY_ENDPOINT = "https://n8n-n8n.5o5xy8.easypanel.host/webhook/web-memorize-sabado-pesquisa";
+
   function getFinalUrl() {
     var url = GROUP_FALLBACK;
     try {
@@ -453,6 +456,9 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
       fbq("trackCustom", "QuizComplete", answers);
     }
 
+    // Envia todos os dados da pesquisa para o webhook
+    sendSurvey();
+
     // fake "processing" then show result
     setTimeout(function () {
       document.getElementById("loader").style.display = "none";
@@ -462,6 +468,52 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
       cta.href = FINAL_URL;
       window.location.href = FINAL_URL;
     }, 1600);
+  }
+
+  function sendSurvey() {
+    if (!SURVEY_ENDPOINT) return;
+
+    // Dados do lead capturados na página intensivão (mesmo domínio)
+    var lead = {};
+    try { lead = JSON.parse(localStorage.getItem("leadMemorize") || "{}") || {}; } catch (e) {}
+
+    // UTMs / parâmetros de rastreio da URL
+    var utm = {};
+    try {
+      new URLSearchParams(window.location.search).forEach(function (v, k) {
+        if (/^utm_/i.test(k) || k === "fbclid" || k === "gclid" || k === "xcod" || k === "sck") utm[k] = v;
+      });
+    } catch (e) {}
+
+    // Respostas legíveis (pergunta -> resposta)
+    var respostas = {};
+    QUESTIONS.forEach(function (q) {
+      respostas[q.key] = { pergunta: q.title, resposta: answers[q.key] || null };
+    });
+
+    var payload = {
+      origem: "Pesquisa Quiz — 100 Dias ENEM",
+      nome: lead.nome || null,
+      email: lead.email || null,
+      telefone: lead.telefone || null,
+      telefone_ddi: lead.telefone_ddi || null,
+      evento: lead.evento || null,
+      grupo: FINAL_URL,
+      respostas: respostas,
+      respostas_simples: answers,
+      pagina: window.location.href,
+      data_envio: new Date().toISOString(),
+      utm: utm
+    };
+
+    try {
+      fetch(SURVEY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
   }
 
   function escapeAttr(s) {
