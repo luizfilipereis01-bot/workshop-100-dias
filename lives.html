@@ -181,6 +181,14 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
   .live-row .info { flex: 1; min-width: 0; }
   .live-row .info .theme { font-size: 16px; font-weight: 600; color: var(--text); }
   .live-row .info .when { font-size: 13.5px; color: var(--muted); }
+  .live-row .subj {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--orange); background: rgba(226,59,52,0.10); border-radius: 6px; padding: 2px 8px; margin-right: 9px;
+    vertical-align: middle; position: relative; top: -1px;
+  }
+  .live-row.is-past { opacity: 0.62; }
+  .live-row.is-past .date .d { color: var(--muted-2); }
+  .live-row.is-past .subj { color: var(--muted-2); background: rgba(0,0,0,0.06); }
   .live-row .pill {
     flex: 0 0 auto; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
     color: var(--orange); background: rgba(226,59,52,0.10); border-radius: 999px; padding: 5px 12px;
@@ -454,17 +462,50 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
   <script>
     /* =========================================================
        CALENDÁRIO DAS LIVES  ← EDITE AQUI
-       Cada item: { iso: 'AAAA-MM-DDTHH:MM', tema: '...' }
-       - iso: data e hora de início (24h). Ex.: '2026-09-10T19:00'
-       - tema: assunto da live
-       (placeholders — substitua pelas datas reais do Notion)
+       Cada item: { iso: 'AAAA-MM-DDTHH:MM', materia: '...', tema: '...' }
+       - iso: data e hora de início (24h). Ex.: '2026-08-03T19:00'
+       - materia: disciplina (vira a etiqueta colorida)
+       - tema: título da live
+       Obs.: horário padrão 19h — ajuste no 'iso' se for outro.
     ========================================================= */
     var LIVES = [
-      { iso: '2026-09-09T19:00', tema: 'Abertura da reta final — como usar as lives até o ENEM' },
-      { iso: '2026-09-16T19:00', tema: 'Correção do ENEM 2025 — dia 1' },
-      { iso: '2026-09-23T19:00', tema: 'Correção do ENEM 2025 — dia 2' },
-      { iso: '2026-09-30T19:00', tema: 'Resolução do Simulado SAS' },
-      { iso: '2026-10-07T19:00', tema: 'Resolução do Simulado Memorize' }
+      { iso: '2026-08-03T19:00', materia: 'Matemática', tema: 'FUNÇÃO DO 1º GRAU do zero, sem decoreba' },
+      { iso: '2026-08-04T19:00', materia: 'Biologia',   tema: 'CITOLOGIA: a célula que cai todo ano' },
+      { iso: '2026-08-05T19:00', materia: 'Química',    tema: 'FUNÇÕES INORGÂNICAS sem precisar decorar' },
+      { iso: '2026-08-06T19:00', materia: 'Física',     tema: 'ONDULATÓRIA: a queridinha do ENEM' },
+      { iso: '2026-08-10T19:00', materia: 'Matemática', tema: 'FUNÇÃO DO 2º GRAU: a parábola destravada' },
+      { iso: '2026-08-11T19:00', materia: 'Biologia',   tema: 'BIOQUÍMICA: só o que realmente cai' },
+      { iso: '2026-08-12T19:00', materia: 'Química',    tema: 'SOLUÇÕES e concentração numa aula só' },
+      { iso: '2026-08-13T19:00', materia: 'Física',     tema: 'ONDULATÓRIA II: som, luz e Doppler' },
+      { iso: '2026-08-17T19:00', materia: 'Matemática', tema: 'ESTATÍSTICA: o assunto que mais cai' },
+      { iso: '2026-08-18T19:00', materia: 'Biologia',   tema: 'GENÉTICA MOLECULAR do DNA à proteína' },
+      { iso: '2026-08-19T19:00', materia: 'Química',    tema: 'ESTEQUIOMETRIA destravada de vez' },
+      { iso: '2026-08-20T19:00', materia: 'Física',     tema: 'CINEMÁTICA: MRU e MRUV sem enrolação' },
+      { iso: '2026-08-24T19:00', materia: 'Matemática', tema: 'PA e PG numa aula, com os macetes' },
+      { iso: '2026-08-25T19:00', materia: 'Biologia',   tema: 'GENÉTICA CLÁSSICA: Mendel sem mistério' },
+      { iso: '2026-08-26T19:00', materia: 'Química',    tema: 'TERMOQUÍMICA e CINÉTICA numa aula só' },
+      { iso: '2026-08-27T19:00', materia: 'Física',     tema: 'CINEMÁTICA II: lançamentos e gráficos' },
+      { iso: '2026-08-31T19:00', materia: 'Matemática', tema: 'GEOMETRIA PLANA: as áreas que sempre caem' },
+      { iso: '2026-09-01T19:00', materia: 'Biologia',   tema: 'BIOTECNOLOGIA: transgênicos e clonagem' },
+      { iso: '2026-09-02T19:00', materia: 'Química',    tema: 'FUNÇÕES ORGÂNICAS sem decorar nada' },
+      { iso: '2026-09-03T19:00', materia: 'Física',     tema: 'DINÂMICA I: Leis de Newton na prática' },
+      { iso: '2026-09-07T19:00', materia: 'Matemática', tema: 'GEOMETRIA PLANA II: círculo e semelhança' },
+      { iso: '2026-09-08T19:00', materia: 'Biologia',   tema: 'EVOLUÇÃO: Darwin, Lamarck e o que cai' },
+      { iso: '2026-09-09T19:00', materia: 'Química',    tema: 'PROPRIEDADES ORGÂNICAS: o que define tudo' },
+      { iso: '2026-09-10T19:00', materia: 'Física',     tema: 'TRABALHO e ENERGIA: a Física que mais cai' },
+      { iso: '2026-09-14T19:00', materia: 'Matemática', tema: 'GEOMETRIA ESPACIAL: volumes sem decoreba' },
+      { iso: '2026-09-15T19:00', materia: 'Biologia',   tema: 'FISIOLOGIA I: o corpo humano no ENEM' },
+      { iso: '2026-09-16T19:00', materia: 'Química',    tema: 'REAÇÕES ORGÂNICAS que sempre aparecem' },
+      { iso: '2026-09-17T19:00', materia: 'Física',     tema: 'ELETROSTÁTICA: carga, campo e potencial' },
+      { iso: '2026-09-18T19:00', materia: 'Matemática', tema: 'GEOMETRIA ESPACIAL II: sólidos redondos' },
+      { iso: '2026-09-19T19:00', materia: 'Biologia',   tema: 'FISIOLOGIA II: hormônios e sistema nervoso' },
+      { iso: '2026-09-21T19:00', materia: 'Matemática', tema: 'ANÁLISE COMBINATÓRIA sem fórmula decorada' },
+      { iso: '2026-09-22T19:00', materia: 'Biologia',   tema: 'DOENÇAS: as que mais aparecem na prova' },
+      { iso: '2026-09-23T19:00', materia: 'Química',    tema: 'ELETROQUÍMICA: pilhas e eletrólise' },
+      { iso: '2026-09-24T19:00', materia: 'Física',     tema: 'ELETRODINÂMICA: circuitos e conta de luz' },
+      { iso: '2026-09-28T19:00', materia: 'Matemática', tema: 'PROBABILIDADE: o jeito simples de acertar' },
+      { iso: '2026-09-29T19:00', materia: 'Biologia',   tema: 'ECOLOGIA: campeã de questões no ENEM' },
+      { iso: '2026-09-30T19:00', materia: 'Química',    tema: 'RADIOATIVIDADE e MEIO AMBIENTE numa aula' }
     ];
 
     var MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
@@ -481,7 +522,7 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
       var now = new Date();
 
       // ordena por data e acha a próxima futura
-      var items = LIVES.map(function (l) { return { tema: l.tema, dt: new Date(l.iso) }; })
+      var items = LIVES.map(function (l) { return { tema: l.tema, materia: l.materia || '', dt: new Date(l.iso) }; })
                        .sort(function (a, b) { return a.dt - b.dt; });
       var nextIdx = -1;
       for (var i = 0; i < items.length; i++) {
@@ -494,10 +535,11 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         var dia = DIAS[it.dt.getDay()];
         var pill = isNext ? '<span class="pill">Próxima</span>'
                           : (past ? '<span class="pill past">Encerrada</span>' : '');
+        var subj = it.materia ? '<span class="subj">' + it.materia + '</span>' : '';
         return '' +
-          '<div class="live-row' + (isNext ? ' is-next' : '') + '">' +
+          '<div class="live-row' + (isNext ? ' is-next' : '') + (past ? ' is-past' : '') + '">' +
             '<div class="date"><div class="d">' + it.dt.getDate() + '</div><div class="m">' + MESES[it.dt.getMonth()] + '</div></div>' +
-            '<div class="info"><div class="theme">' + it.tema + '</div>' +
+            '<div class="info"><div class="theme">' + subj + it.tema + '</div>' +
               '<div class="when">' + dia + ' · ' + fmtHora(it.dt) + ' · ao vivo no YouTube</div></div>' +
             pill +
           '</div>';
@@ -508,8 +550,8 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         var nx = items[nextIdx];
         document.getElementById('nlDay').textContent = nx.dt.getDate();
         document.getElementById('nlMonth').textContent = MESES[nx.dt.getMonth()];
-        document.getElementById('nlTheme').textContent = nx.tema;
-        document.getElementById('nlWhen').textContent = DIAS[nx.dt.getDay()] + ' · ' + fmtHora(nx.dt);
+        document.getElementById('nlTheme').textContent = (nx.materia ? nx.materia + ' · ' : '') + nx.tema;
+        document.getElementById('nlWhen').textContent = DIAS[nx.dt.getDay()] + ' · ' + fmtHora(nx.dt) + ' · ao vivo no YouTube';
         document.getElementById('nextLive').hidden = false;
       }
     })();
