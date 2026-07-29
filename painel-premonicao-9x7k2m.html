@@ -42,7 +42,6 @@
   .btn:active { transform:translateY(1px); }
   .btn.gold { background:linear-gradient(180deg,#f5c842,var(--gold-deep)); color:#1a1400; border:none; }
 
-  /* tabs */
   .tabs { display:flex; gap:6px; border-bottom:1px solid var(--border); margin:22px 0 24px; overflow-x:auto; }
   .tab { font-family:var(--fd); font-weight:600; font-size:14px; color:var(--text-mid); background:none; border:none; border-bottom:2px solid transparent; padding:12px 14px; cursor:pointer; white-space:nowrap; }
   .tab.active { color:var(--gold); border-bottom-color:var(--gold); }
@@ -51,9 +50,8 @@
   .view.active { display:block; }
   @keyframes fade { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-  /* KPIs */
   .kpis { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .kpi { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px 18px; box-shadow:var(--shadow); }
+  .kpi { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); }
   .kpi .lab { font-family:var(--fm); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-low); }
   .kpi .val { font-family:var(--fd); font-weight:700; font-size:32px; margin-top:6px; }
   .kpi .val.gold { color:var(--gold); }
@@ -61,11 +59,11 @@
 
   .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); margin-top:18px; }
   .card h3 { font-size:16px; margin-bottom:4px; }
+  .card h3 small { font-family:var(--fs); font-weight:500; font-size:12px; color:var(--text-low); letter-spacing:0; }
   .card .hint { font-size:12.5px; color:var(--text-mid); margin-bottom:16px; }
 
-  /* funnel + bars */
   .bars { display:flex; flex-direction:column; gap:11px; }
-  .bar-row { display:grid; grid-template-columns:180px 1fr 74px; align-items:center; gap:12px; }
+  .bar-row { display:grid; grid-template-columns:200px 1fr 82px; align-items:center; gap:12px; }
   .bar-row .bl { font-size:13px; color:var(--text-mid); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .bar-track { height:26px; background:var(--bg-inner); border-radius:8px; overflow:hidden; }
   .bar-fill { height:100%; border-radius:8px; background:linear-gradient(90deg,var(--gold-deep),var(--gold)); min-width:2px; transition:width .5s ease; }
@@ -76,9 +74,8 @@
 
   .grid2 { display:grid; grid-template-columns:1fr; gap:18px; }
 
-  /* table */
   .tbl-tools { display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap; }
-  .tbl-tools input { background:var(--bg-inner); border:1px solid var(--border-strong); color:var(--text-hi); border-radius:10px; padding:9px 13px; font-family:inherit; font-size:14px; min-width:220px; }
+  .tbl-tools input[type=search] { background:var(--bg-inner); border:1px solid var(--border-strong); color:var(--text-hi); border-radius:10px; padding:9px 13px; font-family:inherit; font-size:14px; min-width:220px; }
   .tbl-tools input:focus { outline:none; border-color:var(--gold); }
   .tbl-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:12px; }
   table { width:100%; border-collapse:collapse; font-size:13px; }
@@ -88,13 +85,26 @@
   td .tag { font-family:var(--fm); font-size:11px; padding:2px 8px; border-radius:6px; background:var(--bg-inner); color:var(--text-mid); }
   .pill-tier { font-family:var(--fm); font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em; }
   .tier-q { background:rgba(244,198,78,.15); color:var(--gold); }
-  .tier-m { background:rgba(34,227,255,.12); color:var(--cy); }
   .tier-f { background:rgba(255,255,255,.06); color:var(--text-low); }
+
+  /* MQL rule builder */
+  .rule-q { border-top:1px solid var(--border); padding:14px 0 4px; }
+  .rule-q:first-child { border-top:none; }
+  .rule-q .qh { font-family:var(--fd); font-weight:600; font-size:13.5px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .rule-q .qh em { font-family:var(--fm); font-style:normal; font-size:10px; color:var(--text-low); text-transform:uppercase; letter-spacing:.1em; }
+  .opts { display:flex; flex-wrap:wrap; gap:8px; }
+  .optchip { font-size:12.5px; color:var(--text-mid); background:var(--bg-inner); border:1px solid var(--border-strong); border-radius:999px; padding:7px 13px; cursor:pointer; user-select:none; transition:all .12s; }
+  .optchip:hover { border-color:var(--gold); }
+  .optchip.on { background:rgba(244,198,78,.14); border-color:var(--gold); color:var(--gold); }
+  .rule-foot { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:18px; padding-top:16px; border-top:1px solid var(--border); }
+  .rule-foot .minbox { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-mid); }
+  .rule-foot input[type=range] { accent-color:var(--gold); }
+  .rule-foot b { font-family:var(--fm); color:var(--gold); }
 
   .empty { text-align:center; padding:60px 20px; }
   .empty h2 { font-size:24px; margin-bottom:12px; }
-  .empty p { color:var(--text-mid); max-width:560px; margin:0 auto 10px; }
-  .code { text-align:left; background:var(--bg-inner); border:1px solid var(--border); border-radius:12px; padding:16px; font-family:var(--fm); font-size:12px; color:var(--text-mid); overflow-x:auto; margin:18px auto 0; max-width:620px; white-space:pre; }
+  .empty p { color:var(--text-mid); max-width:600px; margin:0 auto 10px; }
+  .code { text-align:left; background:var(--bg-inner); border:1px solid var(--border); border-radius:12px; padding:16px; font-family:var(--fm); font-size:12px; color:var(--text-mid); overflow-x:auto; margin:18px auto 0; max-width:640px; white-space:pre; }
   .muted-note { font-size:12px; color:var(--text-low); margin-top:22px; }
   footer { text-align:center; padding:30px; font-family:var(--fm); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-low); }
 
@@ -120,26 +130,20 @@
       <button class="tab" data-view="mql">MQL</button>
     </div>
 
-    <!-- ESTADO SEM FONTE -->
     <div id="setup" class="empty" style="display:none">
       <h2>Conecte a fonte de dados</h2>
-      <p>O painel lê de um <b>endpoint GET no n8n</b> que devolve os leads e as respostas em JSON. Crie um webhook (método GET) que retorne este formato:</p>
-      <div class="code">GET  /webhook/premonicao-dados  →
-
-{
-  "leads": [
-    { "nome","email","telefone","telefone_ddi",
-      "evento","pagina","data_envio","utm": { "utm_source": "...", "utm_campaign": "..." } }
-  ],
-  "respostas": [
-    { "nome","email","telefone","data_envio","grupo","utm": {...},
-      "respostas_simples": {
-        "idade","curso","promessa","dor","urgencia",
-        "desejo","renda","investimento","pagamento"
-      } }
-  ]
-}</div>
-      <p class="muted-note">Depois de criar, ajuste <b>DATA_ENDPOINT</b> no topo do &lt;script&gt; desta página (ou abra com <b>?src=URL</b>).<br/>Enquanto isso, veja o layout com dados fictícios:</p>
+      <p>O painel lê de um <b>endpoint GET no n8n</b>. O formato que você já envia (array plano, uma linha por resposta) é aceito direto — estas chaves:</p>
+      <div class="code">GET → [
+  {
+    "row_number": 2,
+    "Data": "29/07/26 01:53",
+    "Nome": "...", "Email": "...", "Telefone": 5538...,
+    "Idade","curso","promessa","dor","urgência",
+    "desejo","renda","investimento","pagamento",
+    "UTM SOURCE","UTM CAMPAIGN","UTM MEDIUM","UTM CONTENT","UTM TERM"
+  }
+]</div>
+      <p class="muted-note">Ajuste <b>DATA_ENDPOINT</b> no topo do &lt;script&gt; (ou abra com <b>?src=URL</b>). O GET precisa liberar <b>CORS</b> (Access-Control-Allow-Origin).</p>
       <div style="margin-top:16px"><button class="btn gold" id="demoBtn">Ver com dados de exemplo</button></div>
     </div>
 
@@ -148,19 +152,31 @@
       <div class="kpis" id="kpis"></div>
       <div class="card">
         <h3>Funil</h3>
-        <div class="hint">Da captura até o lead qualificado (MQL).</div>
+        <div class="hint">Da resposta da pesquisa até o lead qualificado (MQL). Os critérios de MQL são os que você define na aba MQL.</div>
         <div class="bars" id="funnel"></div>
       </div>
       <div class="grid2">
         <div class="card">
-          <h3>Leads por dia</h3>
-          <div class="hint">Cadastros na captura por data.</div>
+          <h3>Respostas por dia</h3>
+          <div class="hint">Volume por data.</div>
           <div class="bars" id="byDay"></div>
         </div>
         <div class="card">
-          <h3>Origem (utm_source)</h3>
+          <h3>Origem <small>(UTM SOURCE)</small></h3>
           <div class="hint">De onde os leads estão vindo.</div>
           <div class="bars" id="bySource"></div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Campanha <small>(UTM CAMPAIGN)</small></h3>
+          <div class="hint">Top campanhas.</div>
+          <div class="bars" id="byCampaign"></div>
+        </div>
+        <div class="card">
+          <h3>Curso desejado</h3>
+          <div class="hint">Distribuição por curso.</div>
+          <div class="bars" id="byCurso"></div>
         </div>
       </div>
     </div>
@@ -169,11 +185,12 @@
     <div class="view" id="v-leads">
       <div class="tbl-tools">
         <input type="search" id="leadSearch" placeholder="Buscar por nome, e-mail ou telefone…" />
-        <span class="status"><span class="d" style="background:var(--gold)"></span><span id="leadCount">0 leads</span></span>
+        <span class="status"><span class="d" style="background:var(--gold)"></span><span id="leadCount">0</span></span>
+        <button class="btn" id="csvBtn" style="margin-left:auto">⤓ Exportar CSV</button>
       </div>
       <div class="tbl-wrap">
         <table id="leadTable"><thead><tr>
-          <th>Nome</th><th>E-mail</th><th>Telefone</th><th>Origem</th><th>Campanha</th><th>Data</th>
+          <th>Nome</th><th>E-mail</th><th>Telefone</th><th>Curso</th><th>Origem</th><th>Campanha</th><th>Data</th>
         </tr></thead><tbody></tbody></table>
       </div>
     </div>
@@ -185,16 +202,28 @@
 
     <!-- MQL -->
     <div class="view" id="v-mql">
-      <div class="kpis" id="mqlKpis" style="margin-bottom:18px"></div>
       <div class="card">
-        <h3>Leads qualificados</h3>
-        <div class="hint">Pontuação calculada a partir das respostas do quiz (objetivo, urgência, motivação, investimento, forma de pagamento, renda e curso).</div>
+        <h3>Critérios de MQL <small>· definidos por você</small></h3>
+        <div class="hint">Marque, em cada pergunta, as respostas que qualificam um lead. Um lead vira <b>MQL</b> quando bate em pelo menos <b>N</b> critérios (cada pergunta com resposta marcada conta 1). As mudanças são salvas neste navegador.</div>
+        <div id="mqlRule"></div>
+        <div class="rule-foot">
+          <div class="minbox">Mínimo de critérios: <input type="range" id="mqlMin" min="1" max="9" step="1" /> <b id="mqlMinVal">3</b></div>
+          <button class="btn gold" id="saveRule">Salvar</button>
+          <button class="btn" id="resetRule">Padrão sugerido</button>
+          <button class="btn" id="clearRule">Limpar tudo</button>
+        </div>
+      </div>
+      <div class="kpis" id="mqlKpis" style="margin-top:18px"></div>
+      <div class="card">
+        <h3>Ranking de leads</h3>
+        <div class="hint">Ordenados por nº de critérios batidos. MQL = atingiu o mínimo definido acima.</div>
         <div class="tbl-tools">
           <input type="search" id="mqlSearch" placeholder="Buscar…" />
+          <button class="btn" id="mqlCsvBtn" style="margin-left:auto">⤓ Exportar MQL (CSV)</button>
         </div>
         <div class="tbl-wrap">
           <table id="mqlTable"><thead><tr>
-            <th>Nome</th><th>Contato</th><th>Curso</th><th>Tier</th><th>Score</th><th>Sinais</th>
+            <th>Nome</th><th>Contato</th><th>Curso</th><th>MQL</th><th>Critérios</th><th>Bateu em</th>
           </tr></thead><tbody></tbody></table>
         </div>
       </div>
@@ -208,243 +237,308 @@
      CONFIG  ← ajuste o endpoint quando o webhook GET existir
   ========================================================= */
   var DATA_ENDPOINT = 'https://n8n-n8n.5o5xy8.easypanel.host/webhook/premonicao-dados';
-  // Threshold de MQL (lead "quente")
-  var MQL_MIN = 6;
-
-  // permite sobrescrever a fonte via ?src=  (útil pra testar)
   try { var _src = new URLSearchParams(location.search).get('src'); if (_src) DATA_ENDPOINT = _src; } catch(e){}
 
-  var STATE = { leads: [], respostas: [] };
+  var STATE = { rows: [] };
 
+  // perguntas canônicas + todas as respostas possíveis (do quiz) p/ o construtor de MQL
+  var Q_ORDER = ['idade','curso','promessa','dor','urgencia','desejo','renda','investimento','pagamento'];
   var Q_LABELS = {
-    idade:'Idade', curso:'Curso', promessa:'Quer passar já no próximo ENEM',
+    idade:'Idade', curso:'Curso desejado', promessa:'Quer passar já no próximo ENEM',
     dor:'Onde trava', urgencia:'Urgência', desejo:'Motivação',
     renda:'Renda familiar', investimento:'Já investiu', pagamento:'Forma de pagamento'
   };
-  var Q_ORDER = ['idade','curso','promessa','dor','urgencia','desejo','renda','investimento','pagamento'];
+  var Q_OPTIONS = {
+    idade:['Menos de 18 anos','18 a 24 anos','25 a 30 anos','Mais de 30 anos'],
+    curso:['Medicina','Direito','Psicologia','Engenharia','Enfermagem','Outro curso'],
+    promessa:['Sim','Não'],
+    dor:['Estudo, mas sinto que não sei estudar do jeito certo','Me perco no tanto de conteúdo e não sei por onde começar','Sei o que preciso fazer, mas não mantenho a constância','Estudo bastante, mas minha nota não sai do lugar'],
+    urgencia:['Agora — a prova está chegando e não posso perder tempo','Posso esperar um pouco','Tanto faz'],
+    desejo:['É o sonho da minha vida e não vou desistir','Quero provar (pra mim e pra todos) que sou capaz','Quero dar uma vida melhor pra minha família','Quero a estabilidade que a Medicina traz','Sinceramente, tanto faz passar agora ou depois'],
+    renda:['Até 2 mil','Entre 2 e 5 mil','Entre 5 e 8 mil','Entre 8 e 10 mil','Mais de 10 mil'],
+    investimento:['Nunca investi nada','Até R$ 1.000','De R$ 1.000 a R$ 3.000','De R$ 3.000 a R$ 5.000','Mais de R$ 5.000'],
+    pagamento:['Cartão de crédito','Pix','Boleto','Não costumo investir']
+  };
+
+  // critério padrão sugerido de MQL (editável na tela)
+  var DEFAULT_RULE = {
+    min: 3,
+    checks: {
+      promessa:['Sim'],
+      urgencia:['Agora — a prova está chegando e não posso perder tempo'],
+      desejo:['É o sonho da minha vida e não vou desistir','Quero provar (pra mim e pra todos) que sou capaz','Quero dar uma vida melhor pra minha família','Quero a estabilidade que a Medicina traz'],
+      investimento:['Até R$ 1.000','De R$ 1.000 a R$ 3.000','De R$ 3.000 a R$ 5.000','Mais de R$ 5.000'],
+      pagamento:['Cartão de crédito','Pix'],
+      renda:['Entre 5 e 8 mil','Entre 8 e 10 mil','Mais de 10 mil'],
+      curso:['Medicina']
+    }
+  };
+  var RULE = loadRule();
 
   /* ---------- helpers ---------- */
   function el(id){ return document.getElementById(id); }
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function pct(n,d){ return d>0 ? Math.round(n/d*100) : 0; }
-  function dayKey(iso){ try { return new Date(iso).toISOString().slice(0,10); } catch(e){ return '—'; } }
-  function fmtDate(iso){ try { var d=new Date(iso); return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); } catch(e){ return '—'; } }
-  function u(o,k){ return (o && o.utm && o.utm[k]) ? o.utm[k] : ''; }
+  function firstOf(o, keys){ for(var i=0;i<keys.length;i++){ if(o[keys[i]]!=null && o[keys[i]]!=='') return o[keys[i]]; } return ''; }
+  function parseData(s){
+    if(!s) return null;
+    s = String(s);
+    if(/^\d{4}-\d{2}-\d{2}T/.test(s)) return new Date(s);
+    var m = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})[ ,T]+(\d{1,2}):(\d{2})/);
+    if(m){ var y=+m[3]; if(y<100) y+=2000; return new Date(y,+m[2]-1,+m[1],+m[4],+m[5]); }
+    var m2 = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+    if(m2){ var y2=+m2[3]; if(y2<100) y2+=2000; return new Date(y2,+m2[2]-1,+m2[1]); }
+    var d = new Date(s); return isNaN(d)?null:d;
+  }
+  function dayKey(dt){ return dt ? dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0') : '—'; }
+  function fmtDate(dt){ return dt ? dt.toLocaleDateString('pt-BR')+' '+dt.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : '—'; }
 
-  function setStatus(kind, txt){
-    var s = el('status'); s.className = 'status' + (kind ? ' '+kind : '');
-    el('statusTxt').textContent = txt;
+  function setStatus(kind, txt){ el('status').className='status'+(kind?' '+kind:''); el('statusTxt').textContent=txt; }
+
+  /* ---------- normalização das linhas do n8n ---------- */
+  function normRow(r){
+    var dt = parseData(firstOf(r,['Data','data_envio','data','carimbo']));
+    return {
+      _rn: r.row_number!=null ? r.row_number : null,
+      dt: dt,
+      nome: firstOf(r,['Nome','nome']),
+      email: firstOf(r,['Email','email','E-mail','e-mail']),
+      telefone: String(firstOf(r,['Telefone','telefone','WhatsApp','whatsapp'])||''),
+      ans: {
+        idade: firstOf(r,['Idade','idade']),
+        curso: firstOf(r,['curso','Curso']),
+        promessa: firstOf(r,['promessa','Promessa']),
+        dor: firstOf(r,['dor','Dor']),
+        urgencia: firstOf(r,['urgência','urgencia','Urgência','Urgencia']),
+        desejo: firstOf(r,['desejo','Desejo']),
+        renda: firstOf(r,['renda','Renda']),
+        investimento: firstOf(r,['investimento','Investimento']),
+        pagamento: firstOf(r,['pagamento','Pagamento'])
+      },
+      utm: {
+        source: firstOf(r,['UTM SOURCE','utm_source','UTM_SOURCE']),
+        campaign: firstOf(r,['UTM CAMPAIGN','utm_campaign','UTM_CAMPAIGN']),
+        medium: firstOf(r,['UTM MEDIUM','utm_medium']),
+        content: firstOf(r,['UTM CONTENT','utm_content']),
+        term: firstOf(r,['UTM TERM','utm_term'])
+      }
+    };
+  }
+  function dedupe(rows){
+    var seen = {}, out = [];
+    rows.forEach(function(r){
+      var k = r._rn!=null ? ('r'+r._rn) : ((r.email||'').toLowerCase()+'|'+(r.dt?r.dt.getTime():'')+'|'+(r.telefone||''));
+      if(seen[k]) return; seen[k]=1; out.push(r);
+    });
+    return out;
+  }
+  function normalize(json){
+    var arr = Array.isArray(json) ? json : (json && (json.data||json.rows||json.respostas||json.results)) || [];
+    if(!Array.isArray(arr)) arr = [];
+    return dedupe(arr.map(normRow));
   }
 
-  /* ---------- MQL scoring ---------- */
-  function scoreOf(a){
-    a = a || {};
-    var s = 0, sig = [];
-    if (a.promessa === 'Sim'){ s+=2; sig.push('quer passar já'); }
-    if (/^Agora/.test(a.urgencia||'')){ s+=2; sig.push('urgência alta'); }
-    if (a.desejo && !/tanto faz/i.test(a.desejo)){ s+=1; if(/sonho da minha vida/i.test(a.desejo)){ s+=1; sig.push('sonho de vida'); } else { sig.push('motivado'); } }
-    if (a.investimento && a.investimento!=='Nunca investi nada'){ s+=1; if(/Mais de R\$ 5|3\.000 a R\$ 5/.test(a.investimento)){ s+=1; sig.push('já investiu alto'); } else { sig.push('já investiu'); } }
-    if (a.pagamento==='Cartão de crédito' || a.pagamento==='Pix'){ s+=1; sig.push('pagamento pronto'); }
-    else if (a.pagamento==='Não costumo investir'){ s-=1; }
-    if (['Entre 5 e 8 mil','Entre 8 e 10 mil','Mais de 10 mil'].indexOf(a.renda)>=0){ s+=1; sig.push('renda com folga'); }
-    if (a.curso==='Medicina'){ s+=1; sig.push('foco Medicina'); }
-    var tier = s>=MQL_MIN ? 'q' : (s>=3 ? 'm' : 'f');
-    return { score:s, tier:tier, sig:sig };
+  /* ---------- MQL (regra manual) ---------- */
+  function loadRule(){
+    try { var s = localStorage.getItem('mqlRulePremonicao'); if(s){ var o=JSON.parse(s); if(o&&o.checks) return o; } } catch(e){}
+    return JSON.parse(JSON.stringify(DEFAULT_RULE));
   }
-  function tierPill(t){
-    var map = { q:['tier-q','Quente'], m:['tier-m','Morno'], f:['tier-f','Frio'] };
-    return '<span class="pill-tier '+map[t][0]+'">'+map[t][1]+'</span>';
+  function saveRule(){ try { localStorage.setItem('mqlRulePremonicao', JSON.stringify(RULE)); } catch(e){} }
+  function activeCriteria(){ return Q_ORDER.filter(function(q){ return RULE.checks[q] && RULE.checks[q].length; }); }
+  function evalRow(row){
+    var hits = [];
+    activeCriteria().forEach(function(q){
+      var v = row.ans[q];
+      if(v && RULE.checks[q].indexOf(v)>=0) hits.push(q);
+    });
+    return { matched: hits.length, hits: hits, isMql: hits.length >= RULE.min };
   }
 
   /* ---------- render bars ---------- */
-  function renderBars(container, rows, cls){
+  function renderBars(container, rows, cls, total){
     var max = rows.reduce(function(m,r){ return Math.max(m, r.v); }, 0) || 1;
     container.innerHTML = rows.map(function(r){
       var w = Math.round(r.v/max*100);
-      var perc = r.total!=null ? ' <small>'+pct(r.v,r.total)+'%</small>' : '';
+      var perc = total!=null ? ' <small>'+pct(r.v,total)+'%</small>' : '';
       return '<div class="bar-row"><div class="bl" title="'+esc(r.label)+'">'+esc(r.label)+'</div>'+
         '<div class="bar-track"><div class="bar-fill '+(cls||'')+'" style="width:'+w+'%"></div></div>'+
         '<div class="bar-val">'+r.v+perc+'</div></div>';
     }).join('') || '<div class="hint">Sem dados.</div>';
   }
-
   function countBy(arr, fn){
-    var m = {};
-    arr.forEach(function(x){ var k = fn(x) || '(vazio)'; m[k] = (m[k]||0)+1; });
-    return Object.keys(m).map(function(k){ return {label:k, v:m[k]}; }).sort(function(a,b){ return b.v-a.v; });
+    var m={}; arr.forEach(function(x){ var k=fn(x); k=(k==null||k==='')?'(vazio)':k; m[k]=(m[k]||0)+1; });
+    return Object.keys(m).map(function(k){ return {label:k,v:m[k]}; }).sort(function(a,b){ return b.v-a.v; });
   }
 
-  /* ---------- render everything ---------- */
+  /* ---------- render principal ---------- */
   function render(){
-    var leads = STATE.leads, resp = STATE.respostas;
-    var mqls = resp.map(function(r){ return scoreOf(r.respostas_simples); });
-    var nQuente = mqls.filter(function(m){ return m.tier==='q'; }).length;
-    var nMorno = mqls.filter(function(m){ return m.tier==='m'; }).length;
-    var nFrio  = mqls.filter(function(m){ return m.tier==='f'; }).length;
+    var rows = STATE.rows;
+    var n = rows.length;
+    var evals = rows.map(evalRow);
+    var nMql = evals.filter(function(e){ return e.isMql; }).length;
 
     // KPIs
     el('kpis').innerHTML = [
-      ['Leads (captura)', leads.length, ''],
-      ['Responderam o quiz', resp.length, pct(resp.length,leads.length)+'% dos leads'],
-      ['MQL (quentes)', nQuente, pct(nQuente,resp.length)+'% das respostas', 'gold'],
-      ['Taxa de conclusão', pct(resp.length,leads.length)+'%', 'quiz concluído']
-    ].map(function(k){
-      return '<div class="kpi"><div class="lab">'+k[0]+'</div><div class="val '+(k[3]||'')+'">'+k[1]+'</div><div class="sub">'+(k[2]||'&nbsp;')+'</div></div>';
-    }).join('');
+      ['Respostas na pesquisa', n, 'leads que concluíram o quiz'],
+      ['MQL', nMql, pct(nMql,n)+'% das respostas', 'gold'],
+      ['Não qualificados', n-nMql, pct(n-nMql,n)+'% das respostas'],
+      ['Critérios ativos', activeCriteria().length, 'mín. '+RULE.min+' p/ ser MQL']
+    ].map(function(k){ return '<div class="kpi"><div class="lab">'+k[0]+'</div><div class="val '+(k[3]||'')+'">'+k[1]+'</div><div class="sub">'+(k[2]||'&nbsp;')+'</div></div>'; }).join('');
 
-    // Funnel
+    // Funil
     renderBars(el('funnel'), [
-      {label:'Leads capturados', v:leads.length, total:leads.length},
-      {label:'Responderam o quiz', v:resp.length, total:leads.length},
-      {label:'MQL (quentes)', v:nQuente, total:leads.length}
-    ]);
+      {label:'Responderam a pesquisa', v:n},
+      {label:'MQL (qualificados)', v:nMql}
+    ], '', n);
 
     // por dia
-    var byDay = {};
-    leads.forEach(function(l){ var d=dayKey(l.data_envio); byDay[d]=(byDay[d]||0)+1; });
-    var days = Object.keys(byDay).sort().slice(-10).map(function(d){
-      var lbl = d==='—' ? d : d.slice(8,10)+'/'+d.slice(5,7);
-      return {label:lbl, v:byDay[d]};
-    });
-    renderBars(el('byDay'), days, 'p');
+    var byDay={}; rows.forEach(function(r){ var d=dayKey(r.dt); byDay[d]=(byDay[d]||0)+1; });
+    renderBars(el('byDay'), Object.keys(byDay).sort().slice(-12).map(function(d){ return {label: d==='—'?d:(d.slice(8,10)+'/'+d.slice(5,7)), v:byDay[d]}; }), 'p');
 
-    // origem
-    renderBars(el('bySource'), countBy(leads, function(l){ return u(l,'utm_source'); }).slice(0,8));
+    renderBars(el('bySource'), countBy(rows, function(r){ return r.utm.source; }).slice(0,8));
+    renderBars(el('byCampaign'), countBy(rows, function(r){ return r.utm.campaign; }).slice(0,8), 'p');
+    renderBars(el('byCurso'), countBy(rows, function(r){ return r.ans.curso; }), 'g');
 
-    // leads table
-    renderLeadTable('');
-    el('leadCount').textContent = leads.length + (leads.length===1?' lead':' leads');
+    // leads
+    renderLeadTable(el('leadSearch').value||'');
+    el('leadCount').textContent = n + (n===1?' lead':' leads');
 
     // respostas por pergunta
     el('respBlocks').innerHTML = Q_ORDER.map(function(key){
-      var rows = countBy(resp, function(r){ return (r.respostas_simples||{})[key]; }).map(function(x){ x.total=resp.length; return x; });
-      return '<div class="card"><h3>'+esc(Q_LABELS[key])+'</h3><div class="hint">'+resp.length+' respostas</div><div class="bars">'+
-        rows.map(function(r){ var max=rows.reduce(function(m,x){return Math.max(m,x.v)},0)||1; var w=Math.round(r.v/max*100);
-          return '<div class="bar-row"><div class="bl" title="'+esc(r.label)+'">'+esc(r.label)+'</div><div class="bar-track"><div class="bar-fill" style="width:'+w+'%"></div></div><div class="bar-val">'+r.v+' <small>'+pct(r.v,resp.length)+'%</small></div></div>';
-        }).join('') + '</div></div>';
+      var rowsc = countBy(rows, function(r){ return r.ans[key]; });
+      return '<div class="card"><h3>'+esc(Q_LABELS[key])+'</h3><div class="hint">'+n+' respostas</div><div class="bars">'+
+        rowsc.map(function(r){ var max=rowsc.reduce(function(m,x){return Math.max(m,x.v)},0)||1; var w=Math.round(r.v/max*100);
+          return '<div class="bar-row"><div class="bl" title="'+esc(r.label)+'">'+esc(r.label)+'</div><div class="bar-track"><div class="bar-fill" style="width:'+w+'%"></div></div><div class="bar-val">'+r.v+' <small>'+pct(r.v,n)+'%</small></div></div>';
+        }).join('')+'</div></div>';
     }).join('');
 
-    // MQL
+    // MQL kpis + tabela
     el('mqlKpis').innerHTML = [
-      ['Quentes (MQL)', nQuente, 'gold'], ['Mornos', nMorno, ''], ['Frios', nFrio, ''], ['Total avaliado', resp.length, '']
+      ['MQL', nMql, 'gold'], ['Não-MQL', n-nMql, ''], ['Total avaliado', n, ''], ['Mín. critérios', RULE.min, '']
     ].map(function(k){ return '<div class="kpi"><div class="lab">'+k[0]+'</div><div class="val '+(k[2]||'')+'">'+k[1]+'</div></div>'; }).join('');
-    renderMqlTable('');
+    renderMqlTable(el('mqlSearch').value||'');
   }
 
   function renderLeadTable(q){
-    q = (q||'').toLowerCase();
-    var rows = STATE.leads.filter(function(l){
-      if(!q) return true;
-      return ((l.nome||'')+' '+(l.email||'')+' '+(l.telefone||'')).toLowerCase().indexOf(q)>=0;
-    });
-    var tb = el('leadTable').querySelector('tbody');
-    tb.innerHTML = rows.map(function(l){
-      return '<tr><td>'+esc(l.nome)+'</td><td>'+esc(l.email)+'</td><td>'+esc(l.telefone)+'</td>'+
-        '<td><span class="tag">'+esc(u(l,'utm_source')||'—')+'</span></td>'+
-        '<td><span class="tag">'+esc(u(l,'utm_campaign')||'—')+'</span></td>'+
-        '<td>'+fmtDate(l.data_envio)+'</td></tr>';
-    }).join('') || '<tr><td colspan="6" style="color:var(--text-low);text-align:center;padding:26px">Nenhum lead.</td></tr>';
+    q=(q||'').toLowerCase();
+    var rows = STATE.rows.filter(function(r){ if(!q) return true; return ((r.nome||'')+' '+(r.email||'')+' '+(r.telefone||'')).toLowerCase().indexOf(q)>=0; })
+      .sort(function(a,b){ return (b.dt?b.dt.getTime():0)-(a.dt?a.dt.getTime():0); });
+    el('leadTable').querySelector('tbody').innerHTML = rows.map(function(r){
+      return '<tr><td>'+esc(r.nome||'—')+'</td><td>'+esc(r.email)+'</td><td>'+esc(r.telefone)+'</td><td>'+esc(r.ans.curso||'—')+'</td>'+
+        '<td><span class="tag">'+esc(r.utm.source||'—')+'</span></td><td><span class="tag">'+esc(r.utm.campaign||'—')+'</span></td><td>'+fmtDate(r.dt)+'</td></tr>';
+    }).join('') || '<tr><td colspan="7" style="color:var(--text-low);text-align:center;padding:26px">Nenhum lead.</td></tr>';
   }
 
   function renderMqlTable(q){
-    q = (q||'').toLowerCase();
-    var rows = STATE.respostas.map(function(r){ return { r:r, m:scoreOf(r.respostas_simples) }; })
-      .sort(function(a,b){ return b.m.score - a.m.score; })
+    q=(q||'').toLowerCase();
+    var rows = STATE.rows.map(function(r){ return { r:r, e:evalRow(r) }; })
+      .sort(function(a,b){ return b.e.matched-a.e.matched; })
       .filter(function(x){ if(!q) return true; return ((x.r.nome||'')+' '+(x.r.email||'')).toLowerCase().indexOf(q)>=0; });
-    var tb = el('mqlTable').querySelector('tbody');
-    tb.innerHTML = rows.map(function(x){
-      var a = x.r.respostas_simples||{};
-      var contato = esc(x.r.email||'') + (x.r.telefone?(' · '+esc(x.r.telefone)):'');
-      return '<tr><td>'+esc(x.r.nome||'—')+'</td><td>'+contato+'</td><td>'+esc(a.curso||'—')+'</td>'+
-        '<td>'+tierPill(x.m.tier)+'</td><td><b style="font-family:var(--fm)">'+x.m.score+'</b></td>'+
-        '<td style="white-space:normal;color:var(--text-mid);font-size:12px">'+esc(x.m.sig.join(' · ')||'—')+'</td></tr>';
+    el('mqlTable').querySelector('tbody').innerHTML = rows.map(function(x){
+      var contato = esc(x.r.email||'')+(x.r.telefone?(' · '+esc(x.r.telefone)):'');
+      var badge = x.e.isMql ? '<span class="pill-tier tier-q">MQL</span>' : '<span class="pill-tier tier-f">—</span>';
+      var hits = x.e.hits.map(function(h){ return Q_LABELS[h]; }).join(' · ');
+      return '<tr><td>'+esc(x.r.nome||'—')+'</td><td>'+contato+'</td><td>'+esc(x.r.ans.curso||'—')+'</td>'+
+        '<td>'+badge+'</td><td><b style="font-family:var(--fm)">'+x.e.matched+'</b>/'+activeCriteria().length+'</td>'+
+        '<td style="white-space:normal;color:var(--text-mid);font-size:12px">'+esc(hits||'—')+'</td></tr>';
     }).join('') || '<tr><td colspan="6" style="color:var(--text-low);text-align:center;padding:26px">Sem respostas.</td></tr>';
   }
 
-  /* ---------- data loading ---------- */
-  function normalize(json){
-    // aceita { leads, respostas } ou { data:{...} } ou um array combinado
-    var d = json && json.data ? json.data : json;
-    var leads = (d && d.leads) || [];
-    var resp = (d && (d.respostas || d.pesquisa || d.responses)) || [];
-    if (Array.isArray(d)) { // array combinado: separa pelo que tiver respostas_simples
-      resp = d.filter(function(x){ return x.respostas_simples; });
-      leads = d;
-    }
-    return { leads: leads, respostas: resp };
+  /* ---------- construtor de MQL ---------- */
+  function buildRuleUI(){
+    el('mqlMin').value = RULE.min; el('mqlMinVal').textContent = RULE.min;
+    el('mqlRule').innerHTML = Q_ORDER.map(function(q){
+      var sel = RULE.checks[q]||[];
+      var chips = Q_OPTIONS[q].map(function(opt){
+        var on = sel.indexOf(opt)>=0 ? ' on':'';
+        return '<span class="optchip'+on+'" data-q="'+q+'" data-opt="'+esc(opt)+'">'+esc(opt)+'</span>';
+      }).join('');
+      return '<div class="rule-q"><div class="qh">'+esc(Q_LABELS[q])+' <em>'+q+'</em></div><div class="opts">'+chips+'</div></div>';
+    }).join('');
   }
-
-  function showData(){
-    el('setup').style.display = 'none';
-    document.querySelectorAll('.view').forEach(function(v){ /* keep */ });
+  document.addEventListener('click', function(e){
+    var chip = e.target.closest('.optchip'); if(!chip) return;
+    var q = chip.dataset.q, opt = chip.dataset.opt;
+    if(!RULE.checks[q]) RULE.checks[q]=[];
+    var i = RULE.checks[q].indexOf(opt);
+    if(i>=0){ RULE.checks[q].splice(i,1); chip.classList.remove('on'); }
+    else { RULE.checks[q].push(opt); chip.classList.add('on'); }
+    if(!RULE.checks[q].length) delete RULE.checks[q];
     render();
+  });
+  function bindRuleControls(){
+    el('mqlMin').addEventListener('input', function(){ RULE.min = +this.value; el('mqlMinVal').textContent=this.value; render(); });
+    el('saveRule').addEventListener('click', function(){ saveRule(); setStatus('ok','critérios salvos'); });
+    el('resetRule').addEventListener('click', function(){ RULE = JSON.parse(JSON.stringify(DEFAULT_RULE)); saveRule(); buildRuleUI(); render(); });
+    el('clearRule').addEventListener('click', function(){ RULE = { min:1, checks:{} }; saveRule(); buildRuleUI(); render(); });
   }
 
+  /* ---------- CSV ---------- */
+  function downloadCSV(name, header, rows){
+    var csv = [header].concat(rows).map(function(r){ return r.map(function(c){ return '"'+String(c==null?'':c).replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+    var a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('﻿'+csv); a.download=name; a.click();
+  }
+  el('csvBtn').addEventListener('click', function(){
+    downloadCSV('leads-premonicao.csv', ['Nome','Email','Telefone','Curso','UTM Source','UTM Campaign','Data'],
+      STATE.rows.map(function(r){ return [r.nome,r.email,r.telefone,r.ans.curso,r.utm.source,r.utm.campaign,fmtDate(r.dt)]; }));
+  });
+  el('mqlCsvBtn').addEventListener('click', function(){
+    var only = STATE.rows.map(function(r){ return {r:r,e:evalRow(r)}; }).filter(function(x){ return x.e.isMql; });
+    downloadCSV('mql-premonicao.csv', ['Nome','Email','Telefone','Curso','Criterios batidos','Sinais'],
+      only.map(function(x){ return [x.r.nome,x.r.email,x.r.telefone,x.r.ans.curso,x.e.matched,x.e.hits.map(function(h){return Q_LABELS[h];}).join(' | ')]; }));
+  });
+
+  /* ---------- data loading ---------- */
+  function showData(){ el('setup').style.display='none'; el('tabs').style.display=''; buildRuleUI(); render(); }
   function load(){
-    setStatus('', 'carregando…');
+    setStatus('','carregando…');
     fetch(DATA_ENDPOINT, { headers:{ 'Accept':'application/json' } })
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
       .then(function(json){
-        STATE = normalize(json);
-        setStatus('ok', (STATE.leads.length)+' leads · '+(STATE.respostas.length)+' respostas');
+        STATE.rows = normalize(json);
+        setStatus('ok', STATE.rows.length+' respostas');
         showData();
       })
-      .catch(function(err){
-        setStatus('err', 'fonte offline');
-        el('setup').style.display = 'block';
-        // esconde as views até conectar
+      .catch(function(){
+        setStatus('err','fonte offline');
+        el('setup').style.display='block';
         document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
-        el('tabs').style.display = 'none';
+        el('tabs').style.display='none';
       });
   }
 
-  /* ---------- demo data ---------- */
+  /* ---------- demo ---------- */
   function demo(){
-    var cursos=['Medicina','Direito','Psicologia','Engenharia','Enfermagem','Outro curso'];
-    var idades=['Menos de 18 anos','18 a 24 anos','25 a 30 anos','Mais de 30 anos'];
-    var urg=['Agora — a prova está chegando e não posso perder tempo','Posso esperar um pouco','Tanto faz'];
-    var desejo=['É o sonho da minha vida e não vou desistir','Quero provar (pra mim e pra todos) que sou capaz','Quero dar uma vida melhor pra minha família','Quero a estabilidade que a Medicina traz','Sinceramente, tanto faz passar agora ou depois'];
-    var renda=['Até 2 mil','Entre 2 e 5 mil','Entre 5 e 8 mil','Entre 8 e 10 mil','Mais de 10 mil'];
-    var inv=['Nunca investi nada','Até R$ 1.000','De R$ 1.000 a R$ 3.000','De R$ 3.000 a R$ 5.000','Mais de R$ 5.000'];
-    var pag=['Cartão de crédito','Pix','Boleto','Não costumo investir'];
-    var dor=['Estudo, mas sinto que não sei estudar do jeito certo','Me perco no tanto de conteúdo e não sei por onde começar','Sei o que preciso fazer, mas não mantenho a constância','Estudo bastante, mas minha nota não sai do lugar'];
-    var srcs=['facebook','instagram','google','organic','youtube'];
+    var pick=function(a){ return a[Math.floor(Math.random()*a.length)]; };
+    var srcs=['FB','IG','google','organic','youtube'];
+    var camps=['03 - 29/07[ADVT][ENEM] 1','02 - abertura','01 - topo'];
     var nomes=['Ana Souza','Bruno Lima','Carla Dias','Diego Alves','Elisa Rocha','Felipe Nunes','Gabi Melo','Hugo Reis','Iris Prado','João Vaz','Karen Sá','Lucas Frota','Marina Cruz','Nina Bastos','Otávio Pires','Paula Rios'];
-    function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
-    var leads=[], resp=[];
-    var base = Date.now();
-    for (var i=0;i<64;i++){
+    var rows=[]; var base=Date.now();
+    for(var i=0;i<70;i++){
       var nome=pick(nomes)+' '+(i+1);
-      var utm={ utm_source:pick(srcs), utm_campaign:'premonicao-abertura' };
-      var dt=new Date(base - Math.floor(Math.random()*7)*86400000 - Math.floor(Math.random()*80000000)).toISOString();
-      var lead={ nome:nome, email:nome.split(' ')[0].toLowerCase()+i+'@email.com', telefone:'(11) 9'+(10000000+Math.floor(Math.random()*89999999)), telefone_ddi:'5511', evento:'Live Premonição ENEM — 01/08, 9h', pagina:'/premonicao', data_envio:dt, utm:utm };
-      leads.push(lead);
-      if (Math.random()<0.62){ // ~62% responde o quiz
-        resp.push({ nome:nome, email:lead.email, telefone:lead.telefone, data_envio:dt, grupo:'grupo', utm:utm,
-          respostas_simples:{ idade:pick(idades), curso:pick(cursos), promessa:(Math.random()<0.8?'Sim':'Não'), dor:pick(dor), urgencia:pick(urg), desejo:pick(desejo), renda:pick(renda), investimento:pick(inv), pagamento:pick(pag) } });
-      }
+      var dt=new Date(base - Math.floor(Math.random()*7)*86400000 - Math.floor(Math.random()*80000000));
+      rows.push({ _rn:i+2, dt:dt, nome:nome, email:nome.split(' ')[0].toLowerCase()+i+'@email.com', telefone:'5511'+(900000000+Math.floor(Math.random()*89999999)),
+        ans:{ idade:pick(Q_OPTIONS.idade), curso:pick(Q_OPTIONS.curso), promessa:(Math.random()<0.8?'Sim':'Não'), dor:pick(Q_OPTIONS.dor), urgencia:pick(Q_OPTIONS.urgencia), desejo:pick(Q_OPTIONS.desejo), renda:pick(Q_OPTIONS.renda), investimento:pick(Q_OPTIONS.investimento), pagamento:pick(Q_OPTIONS.pagamento) },
+        utm:{ source:pick(srcs), campaign:pick(camps), medium:'ADS', content:'ADS 004', term:'Instagram_Feed' } });
     }
-    STATE={ leads:leads, respostas:resp };
-    setStatus('ok', 'DEMO · '+leads.length+' leads · '+resp.length+' respostas');
-    el('tabs').style.display='';
-    el('setup').style.display='none';
-    el('v-overview').classList.add('active');
-    render();
+    STATE.rows=rows; setStatus('ok','DEMO · '+rows.length+' respostas');
+    el('v-overview').classList.add('active'); showData();
   }
 
-  /* ---------- tabs & events ---------- */
+  /* ---------- tabs ---------- */
   el('tabs').addEventListener('click', function(e){
-    var t = e.target.closest('.tab'); if(!t) return;
+    var t=e.target.closest('.tab'); if(!t) return;
     document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
     document.querySelectorAll('.view').forEach(function(x){ x.classList.remove('active'); });
-    t.classList.add('active');
-    el('v-'+t.dataset.view).classList.add('active');
+    t.classList.add('active'); el('v-'+t.dataset.view).classList.add('active');
   });
   el('reloadBtn').addEventListener('click', load);
   el('demoBtn').addEventListener('click', demo);
   el('leadSearch').addEventListener('input', function(){ renderLeadTable(this.value); });
   el('mqlSearch').addEventListener('input', function(){ renderMqlTable(this.value); });
 
+  buildRuleUI();
+  bindRuleControls();
   load();
 </script>
 </body>
