@@ -290,21 +290,12 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site">
-    <div class="wrap bar">
-      <div class="mark"><span class="g">Premonição</span><span class="s">ENEM · Memorize</span></div>
-      <a href="#captura" class="cta">Quero minha vaga</a>
-    </div>
-  </header>
-
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="pill pill-live"><span class="dot"></span>Live gratuita · 01 de agosto · 9h</span>
         <h1>Veja a sua prova <span class="it">antes da prova.</span></h1>
-        <p class="lede">Numa live gratuita, dia <strong>01/08 às 9h</strong>, eu te mostro ao vivo os padrões do ENEM: os assuntos e formatos de questão com maior probabilidade de cair, <strong>mapeados antes do dia da prova</strong> — pra você priorizar certo, revisar rápido e ganhar acertos na reta final.</p>
         <div class="trust">
           <div class="row"><span class="ck">✦</span><span>Aula ao vivo <strong>e gratuita</strong>, dia <strong>01/08 às 9h</strong>, no YouTube</span></div>
           <div class="row"><span class="ck">✦</span><span>Você sai da live com <strong>o mapa dos padrões</strong> e o material de apoio</span></div>
@@ -316,8 +307,6 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         <form id="leadForm" novalidate>
           <div class="kover">Vaga na live gratuita</div>
           <h2>Entre no grupo e receba o link da <span class="it">live.</span></h2>
-          <p class="sub">Leva 30 segundos. Você cai no grupo oficial e recebe o link da aula ao vivo do dia 01/08.</p>
-          <div class="counter"><span class="live-dot"></span><span>Já são <b id="subCount">+2.100</b> confirmados na live</span></div>
 
           <div class="field" id="f-nome">
             <label for="nome">Como você se chama</label>
@@ -557,16 +546,6 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
       dD.textContent = d; dH.textContent = pad(h); dM.textContent = pad(m); dS.textContent = pad(s);
     }
     tick(); setInterval(tick, 1000);
-  })();
-
-  /* ---- Contador de inscritos (cresce devagar com o tempo, verdade aparente) ---- */
-  (function () {
-    var el = document.getElementById('subCount');
-    var base = 2100;
-    // +1 a cada ~40s desde a meia-noite de hoje (limite suave)
-    var midnight = new Date(); midnight.setHours(0,0,0,0);
-    var extra = Math.floor((Date.now() - midnight.getTime()) / 40000);
-    el.textContent = '+' + (base + Math.min(extra, 1800)).toLocaleString('pt-BR');
   })();
 
   /* ---- FAQ ---- */
