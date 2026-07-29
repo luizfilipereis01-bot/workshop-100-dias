@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Personalize sua reta final — Premonição ENEM</title>
+<meta name="description" content="Responda algumas perguntas rápidas e personalize sua reta final rumo à aprovação." />
+<meta name="robots" content="noindex,follow" />
+
+<!-- UTMify -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '998848665814273');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-root: #0a0a0c;
+    --bg-card: #141417;
+    --bg-card-2: #16161b;
+    --bg-inner: #1a1a1f;
+    --border: rgba(255,255,255,.06);
+    --border-strong: rgba(255,255,255,.10);
+    --gold: #f4c64e;
+    --gold-bright: #f5c842;
+    --gold-glow: #ffd873;
+    --gold-deep: #b8892a;
+    --purple: #8b5cf6;
+    --purple-soft: #7c4dff;
+    --text-hi: #f7f5f0;
+    --text-mid: rgba(247,245,240,.62);
+    --text-low: rgba(247,245,240,.42);
+    --radius-card: 20px;
+    --radius-pill: 999px;
+    --shadow-card: 0 10px 34px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
+    --shadow-gold: 0 6px 20px rgba(244,198,78,.28);
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-serif: "Fraunces", Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --maxw: 640px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-root); color: var(--text-hi);
+    font-family: var(--font-sans); line-height: 1.6; font-size: 16px;
+    -webkit-font-smoothing: antialiased; min-height: 100vh;
+    display: flex; flex-direction: column; position: relative;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(760px 520px at 15% -6%, rgba(139,92,246,.18), transparent 60%),
+      radial-gradient(680px 460px at 92% 4%, rgba(244,198,78,.10), transparent 62%),
+      radial-gradient(900px 700px at 50% 108%, rgba(124,77,255,.12), transparent 60%);
+  }
+
+  h1, h2 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; }
+  .it { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--gold); }
+
+  /* progress bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; gap: 14px; padding: 12px 16px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid);
+  }
+  .topbar .track { width: 180px; height: 5px; border-radius: 4px; background: rgba(255,255,255,.10); overflow: hidden; }
+  .topbar .track i { display: block; height: 100%; width: 12%; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); border-radius: 4px; transition: width .4s cubic-bezier(.4,0,.2,1); box-shadow: 0 0 10px var(--gold-glow); }
+  .topbar .pct { color: var(--gold); font-weight: 700; min-width: 34px; text-align: right; }
+
+  main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 46px 22px 60px; position: relative; z-index: 1; }
+  .quiz { width: 100%; max-width: var(--maxw); }
+
+  .step { display: none; animation: fade .45s ease both; }
+  .step.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  .step-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .question { font-size: clamp(25px, 5.5vw, 34px); margin-bottom: 6px; }
+  .sub { color: var(--text-mid); font-size: 15px; margin-bottom: 30px; }
+
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .opt {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    background: var(--bg-card); border: 1.5px solid var(--border-strong); border-radius: 15px;
+    padding: 18px 20px; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--text-hi);
+    cursor: pointer; transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .opt:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(244,198,78,.5); }
+  .opt:active { transform: translateY(0); }
+  .opt.selected { border-color: var(--gold); background: rgba(244,198,78,.08); box-shadow: 0 10px 24px -14px rgba(244,198,78,.55); }
+  .opt .dot { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--border-strong); position: relative; transition: border-color .15s ease; }
+  .opt:hover .dot, .opt.selected .dot { border-color: var(--gold); }
+  .opt.selected .dot::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; }
+  .back { background: none; border: none; cursor: pointer; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text-mid); display: inline-flex; align-items: center; gap: 6px; padding: 8px 4px; }
+  .back:hover { color: var(--text-hi); }
+  .back[hidden] { visibility: hidden; }
+  .hint { font-family: var(--font-mono); font-size: 12px; color: var(--text-low); }
+
+  /* result */
+  .result { text-align: center; padding-top: 10px; }
+  .result .check { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(180deg, var(--gold-bright), var(--gold-deep)); color: #1a1400; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 24px; box-shadow: var(--shadow-gold); }
+  .result h2 { font-size: clamp(26px, 6vw, 38px); margin-bottom: 14px; }
+  .result p { color: var(--text-mid); font-size: 16px; max-width: 460px; margin: 0 auto 30px; }
+
+  .cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold-deep)); color: #1a1400;
+    font-family: var(--font-display); font-size: 16px; font-weight: 700; text-decoration: none;
+    padding: 17px 40px; border-radius: var(--radius-pill); box-shadow: var(--shadow-gold);
+    transition: transform .15s ease, box-shadow .15s ease; border: none; cursor: pointer;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(244,198,78,.4); }
+
+  .loader { text-align: center; padding: 40px 0; }
+  .spinner { width: 44px; height: 44px; margin: 0 auto 22px; border: 4px solid rgba(244,198,78,.2); border-top-color: var(--gold); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loader p { color: var(--text-mid); font-size: 15px; }
+
+  footer { text-align: center; padding: 22px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-low); position: relative; z-index: 1; }
+
+  @media (max-width: 480px) { .opt { padding: 16px 16px; font-size: 15px; } .topbar .track { width: 120px; } }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Premonição ENEM</span>
+    <span class="track"><i id="bar"></i></span>
+    <span class="pct" id="pct">0%</span>
+  </div>
+
+  <main>
+    <form class="quiz" id="quiz" autocomplete="off"><!-- steps via JS --></form>
+  </main>
+
+  <footer>Premonição ENEM · Renato Palmeira</footer>
+
+<script>
+  // ---- Config ----
+  // O link do grupo vem pela URL (?grupo=...), enviado pela página de captura.
+  var GROUP_FALLBACK = "https://sndflw.com/i/premonicao-abertura-gp";
+  // Webhook que recebe todas as respostas da pesquisa
+  var SURVEY_ENDPOINT = "https://n8n-n8n.5o5xy8.easypanel.host/webhook/premonicao-abertura-pesquisa";
+
+  function getFinalUrl() {
+    var url = GROUP_FALLBACK;
+    try {
+      var g = new URLSearchParams(window.location.search).get("grupo");
+      if (g) url = decodeURIComponent(g);
+    } catch (e) {}
+    return url;
+  }
+  var FINAL_URL = getFinalUrl();
+
+  var QUESTIONS = [
+    { key: "idade", tag: "01 · Idade", title: "Qual a sua idade?",
+      options: ["Menos de 18 anos", "18 a 24 anos", "25 a 30 anos", "Mais de 30 anos"] },
+    { key: "promessa", tag: "02 · Seu objetivo", title: "Você quer passar em Medicina (ou no curso dos seus sonhos) já no próximo ENEM?",
+      options: ["Sim", "Não"] },
+    { key: "dor", tag: "03 · Onde você trava", title: "Qual dessas frases mais tem a ver com você hoje?",
+      options: [
+        "Estudo, mas sinto que não sei estudar do jeito certo",
+        "Me perco no tanto de conteúdo e não sei por onde começar",
+        "Sei o que preciso fazer, mas não mantenho a constância",
+        "Estudo bastante, mas minha nota não sai do lugar"
+      ] },
+    { key: "urgencia", tag: "04 · Urgência", title: "Quando você quer resolver isso?",
+      options: [
+        "Agora — a prova está chegando e não posso perder tempo",
+        "Posso esperar um pouco",
+        "Tanto faz"
+      ] },
+    { key: "desejo", tag: "05 · Sua motivação", title: "Por que passar é tão importante pra você?",
+      options: [
+        "É o sonho da minha vida e não vou desistir",
+        "Quero provar (pra mim e pra todos) que sou capaz",
+        "Quero dar uma vida melhor pra minha família",
+        "Quero a estabilidade que a Medicina traz",
+        "Sinceramente, tanto faz passar agora ou depois"
+      ] },
+    { key: "renda", tag: "06 · Renda familiar", title: "Qual a renda aproximada da sua família?",
+      options: ["Até 2 mil", "Entre 2 e 5 mil", "Entre 5 e 8 mil", "Entre 8 e 10 mil", "Mais de 10 mil"] },
+    { key: "investimento", tag: "07 · Investimento já feito", title: "Quanto você já investiu na sua aprovação (cursinho, materiais, mentorias)?",
+      options: ["Nunca investi nada", "Até R$ 1.000", "De R$ 1.000 a R$ 3.000", "De R$ 3.000 a R$ 5.000", "Mais de R$ 5.000"] },
+    { key: "pagamento", tag: "08 · Forma de pagamento", title: "Quando você investe em algo importante, como costuma pagar?",
+      options: ["Cartão de crédito", "Pix", "Boleto", "Não costumo investir"] }
+  ];
+
+  var quiz = document.getElementById("quiz");
+  var bar = document.getElementById("bar");
+  var pct = document.getElementById("pct");
+  var answers = {};
+  var current = 0;
+  var total = QUESTIONS.length;
+
+  QUESTIONS.forEach(function (q, i) {
+    var step = document.createElement("section");
+    step.className = "step";
+    step.dataset.index = i;
+    var opts = q.options.map(function (label) {
+      return '<button type="button" class="opt" data-value="' + escapeAttr(label) + '">' +
+               '<span class="dot"></span><span>' + label + "</span></button>";
+    }).join("");
+    step.innerHTML =
+      '<div class="step-num">' + q.tag + "</div>" +
+      '<h1 class="question">' + q.title + "</h1>" +
+      '<p class="sub">Escolha a opção que mais combina com você.</p>' +
+      '<div class="options">' + opts + "</div>" +
+      '<div class="nav"><button type="button" class="back">← Voltar</button>' +
+        '<span class="hint">Pergunta ' + (i + 1) + " de " + total + "</span></div>";
+    quiz.appendChild(step);
+  });
+
+  var result = document.createElement("section");
+  result.className = "step";
+  result.id = "result-step";
+  result.innerHTML =
+    '<div class="loader" id="loader"><div class="spinner"></div><p>Preparando sua reta final...</p></div>' +
+    '<div class="result" id="result" style="display:none">' +
+      '<div class="check">✓</div>' +
+      "<h2>Prontinho! Seu perfil foi montado.</h2>" +
+      "<p>Agora é só entrar no <strong>grupo da live</strong> — é lá que o link da aula do dia 01/08 e o material vão cair primeiro.</p>" +
+      '<a class="cta" id="finalCta" href="' + FINAL_URL + '">Entrar no grupo da live →</a>' +
+    "</div>";
+  quiz.appendChild(result);
+
+  var steps = quiz.querySelectorAll(".step");
+
+  quiz.addEventListener("click", function (e) {
+    var opt = e.target.closest(".opt");
+    if (opt) return selectOption(opt);
+    var back = e.target.closest(".back");
+    if (back) return goBack();
+  });
+
+  function selectOption(opt) {
+    var step = opt.closest(".step");
+    var i = Number(step.dataset.index);
+    var q = QUESTIONS[i];
+    step.querySelectorAll(".opt").forEach(function (o) { o.classList.remove("selected"); });
+    opt.classList.add("selected");
+    answers[q.key] = opt.dataset.value;
+    if (typeof fbq === "function") {
+      fbq("trackCustom", "QuizAnswer", { step: i + 1, key: q.key, value: opt.dataset.value });
+    }
+    setTimeout(function () {
+      if (i + 1 < total) goTo(i + 1); else finish();
+    }, 260);
+  }
+
+  function goBack() { if (current > 0) goTo(current - 1); }
+
+  function goTo(index) {
+    steps[current].classList.remove("active");
+    current = index;
+    var step = steps[current];
+    step.classList.add("active");
+    var back = step.querySelector(".back");
+    if (back) back.hidden = current === 0;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function updateProgress() {
+    var p = Math.round((current / total) * 100);
+    bar.style.width = Math.max(p, 6) + "%";
+    pct.textContent = p + "%";
+  }
+
+  function finish() {
+    steps[current].classList.remove("active");
+    current = total;
+    document.getElementById("result-step").classList.add("active");
+    bar.style.width = "100%";
+    pct.textContent = "100%";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    try { localStorage.setItem("quizPremonicao", JSON.stringify(answers)); } catch (err) {}
+    if (typeof fbq === "function") { fbq("trackCustom", "QuizComplete", answers); }
+
+    sendSurvey();
+
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("result").style.display = "block";
+      var cta = document.getElementById("finalCta");
+      cta.href = FINAL_URL;
+      window.location.href = FINAL_URL;
+    }, 1600);
+  }
+
+  function sendSurvey() {
+    if (!SURVEY_ENDPOINT) return;
+    // Dados do lead capturados na página de captura (mesmo domínio)
+    var lead = {};
+    try { lead = JSON.parse(localStorage.getItem("leadMemorize") || "{}") || {}; } catch (e) {}
+
+    // UTMs da URL, com fallback nas UTMs guardadas com o lead
+    var utm = {};
+    try {
+      new URLSearchParams(window.location.search).forEach(function (v, k) {
+        if (/^utm_/i.test(k) || k === "fbclid" || k === "gclid" || k === "xcod" || k === "sck") utm[k] = v;
+      });
+    } catch (e) {}
+    if (lead && lead.utm && typeof lead.utm === "object") {
+      Object.keys(lead.utm).forEach(function (k) { if (utm[k] == null) utm[k] = lead.utm[k]; });
+    }
+
+    var respostas = {};
+    QUESTIONS.forEach(function (q) {
+      respostas[q.key] = { pergunta: q.title, resposta: answers[q.key] || null };
+    });
+
+    var payload = {
+      origem: "Pesquisa Quiz — Premonição ENEM (abertura 01/08)",
+      nome: lead.nome || null,
+      email: lead.email || null,
+      telefone: lead.telefone || null,
+      telefone_ddi: lead.telefone_ddi || null,
+      evento: lead.evento || null,
+      grupo: FINAL_URL,
+      respostas: respostas,
+      respostas_simples: answers,
+      pagina: window.location.href,
+      data_envio: new Date().toISOString(),
+      utm: utm
+    };
+
+    try {
+      fetch(SURVEY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  function escapeAttr(s) { return String(s).replace(/"/g, "&quot;"); }
+
+  // init
+  steps[0].classList.add("active");
+  steps[0].querySelector(".back").hidden = true;
+  updateProgress();
+</script>
+</body>
+</html>
