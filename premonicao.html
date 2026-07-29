@@ -653,13 +653,15 @@ src="https://www.facebook.com/tr?id=998848665814273&ev=PageView&noscript=1"
         window.location.href = 'premonicao-quiz?grupo=' + encodeURIComponent(GROUP_URL) + (qs ? '&' + qs : '');
       }
 
+      // Dispara o webhook (keepalive garante o envio mesmo com a navegação)
       if (LEAD_ENDPOINT) {
         fetch(LEAD_ENDPOINT, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload), keepalive: true
-        }).then(done).catch(done);
-        setTimeout(done, 1500);
-      } else { done(); }
+        }).catch(function () {});
+      }
+      // Espera fixa antes de redirecionar: dá tempo do Pixel enviar o evento de Lead
+      setTimeout(done, 1200);
     });
   })();
 </script>
